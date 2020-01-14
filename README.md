@@ -1,7 +1,7 @@
 # Machine Learning snippets
 
 I'm learning ML and those are code snippets that are useful for me.
-**Contribuitions are welcomed!**
+**Contributions are welcomed!**
 
 # Basics
 
