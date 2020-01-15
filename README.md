@@ -206,7 +206,7 @@ def upsample(df, column):
     from sklearn.utils import resample
     cons = df[df[column]==0]
     pros = df[df[column]==1]
-    pros_upsampled = resample(fraud, replace=True, n_samples=len(cons))
+    pros_upsampled = resample(pros, replace=True, n_samples=len(cons))
 
     return pd.concat([cons, pros_upsampled])
 ```
