@@ -47,6 +47,16 @@ new_df = pd.merge(left=df_1, right=df_2, left_on=df_1_column, right_on=df_2_colu
 new_df = pd.concat([df_1, df_2])
 ```
 
+## Dropping colums
+
+```python
+new_df = df.drop(columns=["name"])
+
+# or
+
+df.drop(columns=["name"], inplace=True)
+```
+
 # Drawing
 
 ## Distribution
