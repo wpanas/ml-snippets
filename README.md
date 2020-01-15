@@ -135,7 +135,7 @@ def draw_corr(df):
     sns.heatmap(corr, mask=mask, cmap=cmap, vmax=.3, center=0,
                 square=True, linewidths=.5, cbar_kws={"shrink": .5})
 
-def draw_corr_with_hierarchy(df)
+def draw_corr_with_hierarchy(df):
     sns.clustermap(df.corr())
 ```
 
@@ -169,7 +169,7 @@ df.loc[df["column"].isnull(), ["column"]] = "value"
 ## Dropping not important features
 
 ```python
-def drop_not_important(df, m, alpha = 0.05)
+def drop_not_important(df, m, alpha = 0.05):
     importance = get_importance(m)
     to_keep = importance[importance.Importance > alpha].Features
     return df[to_keep]
