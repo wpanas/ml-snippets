@@ -18,7 +18,7 @@ from scipy import stats
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, recall_score
 ```
 
-## Mapping row
+## Mapping rows
 
 ```python
 def transform_row(row):
@@ -41,7 +41,7 @@ df["fresh_column"] = df["old_column"].map(lambda x: np.log(x) if x > 0 else 0)
 new_df = pd.merge(left=df_1, right=df_2, left_on=df_1_column, right_on=df_2_column)
 ```
 
-## Mergin by appending
+## Merging by appending
 
 ```python
 new_df = pd.concat([df_1, df_2])
@@ -55,6 +55,19 @@ new_df = df.drop(columns=["name"])
 # or
 
 df.drop(columns=["name"], inplace=True)
+```
+
+## Checking for missing values
+
+```python
+df.isnull().sum()
+```
+
+## Checking values
+
+```python
+df["column"].describe() # scalars
+df["column"].value_counts() # categorical
 ```
 
 # Drawing
@@ -146,6 +159,12 @@ draw_importance(X, m)
 ```
 
 # Feature modeling
+
+## Fixing missing values
+
+```python
+df.loc[df["column"].isnull(), ["column"]] = "value"
+```
 
 ## Dropping not important features
 
