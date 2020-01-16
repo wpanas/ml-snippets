@@ -44,7 +44,7 @@ new_df = pd.merge(left=df_1, right=df_2, left_on=df_1_column, right_on=df_2_colu
 ## Merging by appending
 
 ```python
-new_df = pd.concat([df_1, df_2])
+new_df = pd.concat([df_1, df_2], sort=False)
 ```
 
 ## Dropping colums
