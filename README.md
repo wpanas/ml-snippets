@@ -199,7 +199,7 @@ def drop_outliers(data, column):
 
 ## Upsampling
 
-Useful when categories are unbalanced.
+Useful when categories are unbalanced. Remember to split train & test before upsampling.
 
 ```python
 def upsample(df, column):
@@ -209,4 +209,8 @@ def upsample(df, column):
     pros_upsampled = resample(pros, replace=True, n_samples=len(cons))
 
     return pd.concat([cons, pros_upsampled])
+
+# Usage
+train, test = train_test_split(data, test_size=0.33, random_state=42)
+upsampled_train = upsample(train, "column")
 ```
