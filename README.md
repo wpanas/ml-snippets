@@ -44,7 +44,7 @@ new_df = pd.merge(left=df_1, right=df_2, left_on=df_1_column, right_on=df_2_colu
 ## Merging by appending
 
 ```python
-new_df = pd.concat([df_1, df_2], sort=False)
+new_df = df_1.append(df_2, sort=False, ignore_index=True)
 ```
 
 ## Dropping colums
@@ -170,7 +170,7 @@ df.loc[df["column"].isnull(), ["column"]] = "value"
 
 ```python
 def drop_not_important(df, m, alpha = 0.05):
-    importance = get_importance(m)
+    importance = get_importance(df, m)
     to_keep = importance[importance.Importance > alpha].Features
     return df[to_keep]
 ```
