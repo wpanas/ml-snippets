@@ -60,7 +60,11 @@ df.drop(columns=["name"], inplace=True)
 ## Checking for missing values
 
 ```python
-df.isnull().sum()
+def show_missing(data, top=20):
+    total = data.isnull().sum().sort_values(ascending=False)
+    percent = (data.isnull().sum()/data.isnull().count()).sort_values(ascending=False)
+    missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
+    return missing_data.head(top)
 ```
 
 ## Checking values
