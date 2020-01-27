@@ -80,13 +80,15 @@ df["column"].value_counts() # categorical
 
 ```python
 def draw_dist(data, x, hue):
+    from scipy.stats import norm
     fig, axes = plt.subplots(nrows=1, ncols=1,figsize=(15, 8))
     ax = sns.distplot(
         data[data[hue]==1][x].dropna(),
         bins=20,
         label = hue,
         ax = axes,
-        kde = False
+        kde = False,
+        fit = norm
     )
     ax.legend()
     ax = sns.distplot(
@@ -94,7 +96,8 @@ def draw_dist(data, x, hue):
         bins=20, 
         label = 'not ' + hue, 
         ax = axes, 
-        kde = False
+        kde = False,
+        fit = norm
     )
     ax.legend()
 
