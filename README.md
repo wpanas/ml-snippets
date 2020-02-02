@@ -63,9 +63,11 @@ df.drop(columns=["name"], inplace=True)
 
 ```python
 def show_missing(data, top=20):
-    total = data.isnull().sum().sort_values(ascending=False)
-    percent = (data.isnull().sum()/data.isnull().count()).sort_values(ascending=False)
-    missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
+    total = data.isnull().sum()
+    percent = (data.isnull().sum()/data.isnull().count())
+    missing_data = pd.concat([total, percent, data.dtypes], 
+        axis=1, keys=['Total', 'Percent', 'Type'])
+    missing_data = missing_data.sort_values('Total', ascending=False)
     return missing_data.head(top)
 ```
 
