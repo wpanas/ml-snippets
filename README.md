@@ -16,6 +16,8 @@ from sklearn.model_selection import train_test_split
 import re, json
 from scipy import stats
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, recall_score
+%config InlineBackend.figure_format = "retina"
+plt.rcParams["figure.figsize"] = [15, 8]
 ```
 
 ## Mapping rows
@@ -174,7 +176,6 @@ df["column"] = df["column"].fillna("value")
 # or
 df.loc[df["column"].isnull(), ["column"]] = "value"
 ```
-
 
 ## Fixing skewness
 
