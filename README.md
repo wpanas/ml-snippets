@@ -170,8 +170,34 @@ draw_importance(X, m)
 ## Fixing missing values
 
 ```python
+df["column"] = df["column"].fillna("value")
+# or
 df.loc[df["column"].isnull(), ["column"]] = "value"
 ```
+
+
+## Fixing skewness
+
+```python
+def fix_skewed(data, target_column = None):
+    from scipy.stats import skew
+
+    numeric = data.dtypes[data.dtypes != "object"].index.to_list()
+   
+    if target_column is not None:
+        numeric.remove(target_column)
+
+    skewed_feats = data[numeric].apply(lambda x: skew(x.dropna()))
+    skewed_feats = skewed_feats[skewed_feats > 0.75]
+    skewed_feats = skewed_feats.index
+
+    data[skewed_feats] = np.log1p(data[skewed_feats])
+    return data
+```
+
+Watch out for negative values in column. If column has negative values, you can try fixing it by applying `np.cbrt` insted `np.log1p`.
+
+If you fix skewness of targeted column, remember to apply `np.expm1` after predictions to reverse `np.log1p`.
 
 ## Dropping not important features
 
